@@ -1,18 +1,26 @@
 
-import { describe, test, expect } from 'vitest'
+import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import App from './App'
 
 describe('App component:', () => {
-    test('App mounts properly', () => {
-        const wrapper = render(<App />)
+    let appComponent
 
-        expect(wrapper).toBeTruthy()
+    beforeEach(() => {
+        appComponent = render(<App />)
     })
-    test('App has app-container', () => {
-        const divContainer = screen.getByTestId('app-container')
 
-        expect(divContainer).toBeDefined()
+    afterEach(async () => {
+        appComponent = null
+    })
+
+    test('App component mounts properly', () => {
+        expect(appComponent).toBeTruthy()
+    })
+    test('App component has app-container', () => {
+        const appContainer = screen.getByTestId('app-container')
+
+        expect(appContainer).toBeInTheDocument()
     })
 })
   
