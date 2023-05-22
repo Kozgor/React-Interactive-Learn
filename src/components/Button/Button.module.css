@@ -1,0 +1,12 @@
+.btn {
+    width: 80px;
+    height: 35px;
+    border: 1px solid green;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+
+.btn_selected {
+    border-color: red;
+    background-color: lightcoral;
+}
