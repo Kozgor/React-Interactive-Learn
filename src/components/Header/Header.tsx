@@ -6,7 +6,7 @@ const Header = () => {
     const amountMock = 0;
 
     return (
-        <header className={classes.header}>
+        <header role="heading" className={classes.header}>
             <CartIcon amount={amountMock}></CartIcon>
         </header>
     );

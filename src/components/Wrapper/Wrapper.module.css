@@ -1,6 +1,7 @@
 .wrapper {
     height: 100%;
-    padding: 0 80px;
+    padding: 0 120px;
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
 }
