@@ -2,19 +2,20 @@ import { ButtonProps } from "../../interfaces/button-props.interface";
 import classes from "./Button.module.css";
 
 const Button = (props: ButtonProps) => {
-    const selectedMock = false;
+    const { isSelected, onClick, children } = props;
 
     return (
         <button
             type="button"
+            role="button"
             className={
-                selectedMock
+                isSelected
                     ? `${classes.btn}`
                     : `${classes.btn}` + ` ${classes["btn_selected"]}`
             }
-            onClick={props.onClick}
+            onClick={onClick}
         >
-            {props.children}
+            {children}
         </button>
     );
 };
