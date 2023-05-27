@@ -1,0 +1,21 @@
+.message {
+    display: flex;
+    max-width: 200px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.success {
+    border: 1px solid green;
+    background-color: aquamarine;
+}
+
+.error {
+    border: 1px solid red;
+    background-color: lightcoral;
+}
+
+.remove {
+    display: none;
+}
