@@ -1,4 +1,5 @@
 import { ButtonProps } from "../../interfaces/button-props.interface";
+
 import classes from "./Button.module.css";
 
 const Button = (props: ButtonProps) => {
@@ -10,8 +11,8 @@ const Button = (props: ButtonProps) => {
             role="button"
             className={
                 isSelected
-                    ? `${classes.btn}`
-                    : `${classes.btn}` + ` ${classes["btn_selected"]}`
+                    ? `${classes.btn}` + ` ${classes["btn_selected"]}`
+                    : `${classes.btn}`
             }
             onClick={onClick}
         >
