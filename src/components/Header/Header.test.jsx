@@ -1,21 +1,22 @@
 import { describe, test, expect, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-
+import { Provider } from "react-redux";
+import store from '../../store/store';
 import Header from "./Header";
 
 describe("Header component:", () => {
-    let headerComponent;
+    let component;
 
     beforeEach(() => {
-        headerComponent = render(<Header />);
+        component = render(<Provider store={store}><Header/></Provider>);
     });
 
     afterEach(async () => {
-        headerComponent = null;
+        await component.unmount();
     });
 
     test("Header component mounts properly", () => {
-        expect(headerComponent).toBeTruthy();
+        expect(component).toBeTruthy();
     });
 
     test("Header component has header tag", () => {
