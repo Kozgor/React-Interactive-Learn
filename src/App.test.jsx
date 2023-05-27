@@ -1,21 +1,22 @@
 import { describe, test, expect, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-
+import { Provider } from "react-redux";
 import App from "./App";
+import store from "./store/store";
 
 describe("App component:", () => {
-    let appComponent;
+    let component;
 
     beforeEach(() => {
-        appComponent = render(<App />);
+        component = render(<Provider store={store}><App /></Provider>);
     });
 
     afterEach(async () => {
-        appComponent = null;
+        await component.unmount();
     });
 
     test("App component mounts properly", () => {
-        expect(appComponent).toBeTruthy();
+        expect(component).toBeTruthy();
     });
 
     test("App component has app-container", () => {

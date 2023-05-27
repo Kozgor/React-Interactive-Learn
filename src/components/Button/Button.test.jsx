@@ -1,17 +1,19 @@
 import { describe, test, expect, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-
+import { Provider } from "react-redux";
+import store from '../../store/store';
 import Button from "./Button";
+import classes from "./Button.module.css";
 
 describe("Button component:", () => {
     let component;
 
     beforeEach(() => {
-        component = render(<Button>Click</Button>);
+        component = render(<Provider store={store}><Button>Click</Button></Provider>);
     });
 
     afterEach(async () => {
-        component = null;
+        await component.unmount();
     });
 
     test("Button component mounts properly", () => {
@@ -28,5 +30,13 @@ describe("Button component:", () => {
         const text = screen.getByText("Click");
 
         expect(text).toBeInTheDocument();
+    });
+
+    test("Added 'selected' style for button", async () => {
+        await component.unmount();
+        component = render(<Provider store={store}><Button isSelected = {true}>Click</Button></Provider>);
+
+        const buttonElement = screen.getByText('Click');
+        expect(buttonElement).toHaveClass(classes.btn_selected);
     });
 });

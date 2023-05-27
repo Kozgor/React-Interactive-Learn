@@ -1,17 +1,22 @@
 import { describe, test, expect, beforeEach, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Provider } from 'react-redux';
+import store, { addLaunch, removeLaunch } from '../../store/store';
+import React from 'react';
+import MissionItem from './MissionItem';
+import configureStore from 'redux-mock-store';
 
-import MissionItem from "./MissionItem";
+const mockStore = configureStore([]);
 
 describe("MissionItem component:", () => {
     let component;
 
     beforeEach(() => {
-        component = render(<MissionItem />);
+        component = render(<Provider store={store}><MissionItem /></Provider>);
     });
 
     afterEach(async () => {
-        component = null;
+        await component.unmount();
     });
 
     test("MissionItem component mounts properly", () => {
@@ -28,5 +33,27 @@ describe("MissionItem component:", () => {
         const button = screen.getByRole("button");
 
         expect(button).toBeInTheDocument();
+    });
+
+    test('onSelectHandler adds or removes mission ID from the store', async () => {
+        await component.unmount();
+
+        const flightId = 1;
+        const initialState = { launches: { launches: [] } };
+        const store = mockStore(initialState);
+
+        render(
+        <Provider store={store}>
+            <MissionItem name="Test Mission" desc="Test Description" flightId={flightId} />
+        </Provider>
+        );
+
+        const button = screen.getByRole('button');
+
+        fireEvent.click(button);
+        expect(store.getActions()).toEqual([addLaunch(flightId)]);
+
+        fireEvent.click(button);
+        expect(store.getActions()).toEqual([addLaunch(flightId), removeLaunch(flightId)]);
     });
 });

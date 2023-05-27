@@ -7,11 +7,14 @@ const CartIcon = (props: CartIconProps) => {
 
     return (
         <div role="banner" className={classes.box}>
-            <div className={
-              amount !== 0
-                ? `${classes.icon}` + ` ${classes["icon_selected"]}`
-                : `${classes.icon}`
-              }></div>
+            <div 
+              data-testid='banner-icon'
+              className={
+                amount !== 0
+                  ? `${classes.icon}` + ` ${classes["icon_selected"]}`
+                  : `${classes.icon}`
+                }
+              ></div>
             <div className={classes.amount}>{amount}</div>
         </div>
     );

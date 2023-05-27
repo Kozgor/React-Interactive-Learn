@@ -1,17 +1,19 @@
 import { describe, test, expect, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-
+import { Provider } from "react-redux";
+import store from '../../store/store';
 import Wrapper from "./Wrapper";
+
 
 describe("Wrapper component:", () => {
     let component;
 
     beforeEach(() => {
-        component = render(<Wrapper></Wrapper>);
+        component = render(<Provider store={store}><Wrapper/></Provider>);
     });
 
     afterEach(async () => {
-        component = null;
+        await component.unmount();
     });
 
     test("Wrapper component mounts properly", () => {
