@@ -23,3 +23,8 @@
     position: absolute;
     cursor: pointer;
 }
+
+.icon_selected {
+    border-color: purple;
+    background-color: violet;
+}

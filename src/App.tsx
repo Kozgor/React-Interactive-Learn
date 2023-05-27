@@ -11,7 +11,7 @@ function App() {
 
   const fetchRocketMissions = useCallback(async () => {
     const response = await fetch('https://api.spacexdata.com/v3/launches/');
-
+    
     if (!response.ok) {
       throw new Error("Something went wrong!");
     }
