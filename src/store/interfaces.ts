@@ -1,10 +1,12 @@
+import { MissionProps } from "../interfaces/mission-props.interface"
+
 export interface RootStateInterface {
-  launches: number[]
+  launches: MissionProps[]
 }
 
 export interface AddToStoreAction {
   type: 'addLaunch'
-  id: number
+  launch: MissionProps
 }
 
 export interface RemoveFromStoreAction {

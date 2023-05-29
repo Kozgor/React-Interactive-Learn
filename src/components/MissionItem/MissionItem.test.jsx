@@ -39,7 +39,7 @@ describe("MissionItem component:", () => {
         await component.unmount();
 
         const flightId = 1;
-        const initialState = { launches: { launches: [] } };
+        const initialState = { launches: [{ name: 'Test 0', desc: 'Test 0', flightId: 0 }] };
         const store = mockStore(initialState);
 
         render(
@@ -51,9 +51,9 @@ describe("MissionItem component:", () => {
         const button = screen.getByRole('button');
 
         fireEvent.click(button);
-        expect(store.getActions()).toEqual([addLaunch(flightId)]);
+        expect(store.getActions()).toEqual([addLaunch({ name: 'Test Mission', desc: 'Test Description', flightId: 1 })]);
 
         fireEvent.click(button);
-        expect(store.getActions()).toEqual([addLaunch(flightId), removeLaunch(flightId)]);
+        expect(store.getActions()).toEqual([addLaunch({ name: 'Test Mission', desc: 'Test Description', flightId: 1 }), removeLaunch(flightId)]);
     });
 });
