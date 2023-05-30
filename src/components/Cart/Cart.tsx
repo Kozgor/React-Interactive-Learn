@@ -22,6 +22,10 @@ const Cart = (props: BackdropProps) => {
         setLaunchAmount(currentValue > maxAmount ? maxAmount : currentValue);
     };
 
+    useEffect(() => {
+        setLaunchAmount(selectedMissions.length);
+    }, [selectedMissions]);
+
     const checkoutHandler = () => { };
 
     return <Modal onClose={props.onClose}>
@@ -35,7 +39,6 @@ const Cart = (props: BackdropProps) => {
                 </div>
                 <div className={classes.box}>
                     <Button width={'250px'} onClick={checkoutHandler} isSelected={false}>Checkout</Button>
-
                 </div>
             </>
         }
