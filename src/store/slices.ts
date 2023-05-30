@@ -13,5 +13,8 @@ export const launchesSlice = createSlice({
     removeLaunch: (state, action: PayloadAction<number>) => {
       state.launches = state.launches.filter(launch => launch.flightId !== action.payload)
     },
+    removeAllLaunches: (state) => {
+      state.launches = [];
+    },
   },
 })

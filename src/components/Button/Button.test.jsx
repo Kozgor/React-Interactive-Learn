@@ -32,11 +32,12 @@ describe("Button component:", () => {
         expect(text).toBeInTheDocument();
     });
 
-    test("Added 'selected' style for button", async () => {
+    test("Using available styles from props", async () => {
         await component.unmount();
-        component = render(<Provider store={store}><Button isSelected = {true}>Click</Button></Provider>);
+        const addStyles = 'green';
+        component = render(<Provider store={store}><Button buttonClass={addStyles}>Click</Button></Provider>);
 
         const buttonElement = screen.getByText('Click');
-        expect(buttonElement).toHaveClass(classes.btn_selected);
+        expect(buttonElement).toHaveClass(classes.btn_green);
     });
 });

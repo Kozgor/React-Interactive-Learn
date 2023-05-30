@@ -13,3 +13,7 @@ export interface RemoveFromStoreAction {
   type: 'removeLaunch'
   id: number
 }
+
+export interface RemoveLaunchesFromStore {
+  type: 'removeAllLaunches'
+}
