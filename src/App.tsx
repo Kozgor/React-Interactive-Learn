@@ -4,14 +4,13 @@ import Header from "./components/Header/Header";
 import MissionItem from "./components/MissionItem/MissionItem";
 import Wrapper from "./components/Wrapper/Wrapper";
 import { MissionData } from './interfaces/missionData.interface';
-import Message from './components/Message/Message';
 
 function App() {
   const [missions, setMissions] = useState<MissionData[]>([]);
 
   const fetchRocketMissions = useCallback(async () => {
     const response = await fetch('https://api.spacexdata.com/v3/launches/');
-    
+
     if (!response.ok) {
       throw new Error("Something went wrong!");
     }

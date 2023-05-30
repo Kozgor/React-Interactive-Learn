@@ -4,7 +4,6 @@ export interface ModalProps extends BaseProps {
     onClose: () => void
 }
 
-
 export interface BackdropProps {
     onClose: () => void
 }

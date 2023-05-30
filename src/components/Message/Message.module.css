@@ -13,18 +13,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 
 .success {
-    border: 1px solid green;
-    background-color: aquamarine;
+  border: 1px solid green;
+  background-color: aquamarine;
 }
 
 .error {
-    border: 1px solid red;
-    background-color: lightcoral;
+  border: 1px solid red;
+  background-color: lightcoral;
 }
 
 .remove {
-    display: none;
+  display: none;
 }

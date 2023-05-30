@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 import { ButtonProps } from "../../interfaces/button-props.interface";
 
 import classes from "./Button.module.css";
 
-const Button = (props: ButtonProps) => {
+const Button = memo((props: ButtonProps) => {
     const { buttonClass, onClick, children, width } = props;
 
     return (
@@ -16,6 +18,6 @@ const Button = (props: ButtonProps) => {
             {children}
         </button>
     );
-};
+});
 
 export default Button;
