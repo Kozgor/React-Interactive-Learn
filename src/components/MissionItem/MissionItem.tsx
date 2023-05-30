@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { useSelector } from 'react-redux';
 
 import { MissionProps } from "../../interfaces/mission-props.interface";
@@ -9,7 +9,7 @@ import Button from "../Button/Button";
 
 import classes from './MissionItem.module.css';
 
-const MissionItem = (props: MissionProps) => {
+const MissionItem = memo((props: MissionProps) => {
   const noDescription = 'Mission description unavailable';
   const [isSelected, setSelection] = useState(false);
   const selectedMissions = useSelector((state: RootStateInterface) => state.launches);
@@ -41,6 +41,6 @@ const MissionItem = (props: MissionProps) => {
       </Button>
     </div>
   );
-};
+});
 
 export default MissionItem;

@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 
 import { CartIconProps } from "../../interfaces/cart-icon-props.interface";
 import Cart from "../Cart/Cart";
 
 import classes from "./CartIcon.module.css";
 
-const CartIcon = (props: CartIconProps) => {
+const CartIcon = memo((props: CartIconProps) => {
   const [cartIsShown, setCartIsShown] = useState(false);
   const { amount } = props;
 
@@ -34,6 +34,6 @@ const CartIcon = (props: CartIconProps) => {
       {cartIsShown && <Cart onClose={hideCartHandler} />}
     </>
   );
-};
+});
 
 export default CartIcon;
