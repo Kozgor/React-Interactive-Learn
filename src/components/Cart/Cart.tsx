@@ -38,50 +38,46 @@ const Cart = (props: BackdropProps) => {
             setCheckoutStatus('success');
             dispatch(removeAllLaunches())
         }
-        else {
-            if (customerAmount > maxAmount) {
-                setCheckoutMessage('Please pay for items');
-                setCheckoutStatus('error');
-            }
-            if (customerAmount < maxAmount) {
-                setCheckoutMessage('Please pay for items');
-                setCheckoutStatus('error');
-            }
+        if (customerAmount < maxAmount) {
+            setCheckoutMessage('Please pay for items');
+            setCheckoutStatus('error');
         }
     }
 
-    return <Modal onClose={props.onClose}>
-        {selectedMissions.length === 0&&
-        <div className={`${classes.box}` + ` ${classes.cartTitle}`}>
-            <h2>Cart</h2>
-            <h3 className={classes.empty}>Cart is empty!</h3>
-            {checkoutStatus === 'success' &&
-                <Message message={checkoutMessage} status={checkoutStatus} removeOnClick={false} />
+    return(
+        <Modal onClose={props.onClose}>
+            {selectedMissions.length === 0 &&
+            <div className={`${classes.box}` + ` ${classes.cartTitle}`}>
+                <h2>Cart</h2>
+                <h3 className={classes.empty}>Cart is empty!</h3>
+                {checkoutStatus === 'success' &&
+                    <Message message={checkoutMessage} status={checkoutStatus} removeOnClick={false} />
+                }
+            </div>
             }
-        </div>
-        }
-        {selectedMissions.length > 0 &&
-            <>
-                <Wrapper>{selectedMissions.map(mission => <MissionItem key={mission.flightId} name={mission.name} desc={mission.desc} flightId={mission.flightId} />)}</Wrapper>
-                <div className={classes.cartCheckoutContainer}>
-                    <input
-                        className={classes.amountInput}
-                        type="number"
-                        min={0}
-                        value={customerAmount}
-                        onChange={onAmountChangeHandler}
-                        data-testid="launchAmount"
-                    />
-                    <Button width={'250px'} onClick={checkoutHandler} buttonClass={buttonClass}>Checkout</Button>
-                </div>
-                <div className={classes.cartMessageContainer}>
-                    {(checkoutStatus === 'error' && checkoutMessage && selectedMissions.length > 0)&& <div className={classes.box}>
-                        {<Message message={checkoutMessage} status={checkoutStatus} removeOnClick={false} />}
-                    </div>}
-                </div>
-            </>
-        }
-    </Modal>
+            {selectedMissions.length > 0 &&
+                <>
+                    <Wrapper>{selectedMissions.map(mission => <MissionItem key={mission.flightId} name={mission.name} desc={mission.desc} flightId={mission.flightId} />)}</Wrapper>
+                    <div className={classes.cartCheckoutContainer}>
+                        <input
+                            className={classes.amountInput}
+                            type="number"
+                            min={0}
+                            value={customerAmount}
+                            onChange={onAmountChangeHandler}
+                            data-testid="launchAmount"
+                        />
+                        <Button width={'250px'} onClick={checkoutHandler} buttonClass={buttonClass}>Checkout</Button>
+                    </div>
+                    <div className={classes.cartMessageContainer}>
+                        {(checkoutStatus === 'error' && checkoutMessage && selectedMissions.length > 0)&& <div className={classes.box}>
+                            {<Message message={checkoutMessage} status={checkoutStatus} removeOnClick={false} />}
+                        </div>}
+                    </div>
+                </>
+            }
+        </Modal>
+    )
 }
 
 export default Cart;
