@@ -1,9 +1,18 @@
 .message {
-    display: flex;
-    max-width: 200px;
-    padding: 5px 15px;
-    border-radius: 5px;
-    justify-content: center;
+  width: 200px;
+  height: fit-content;
+  padding: 5px 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.message p {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .success {

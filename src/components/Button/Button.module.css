@@ -1,11 +1,19 @@
 .btn {
     height: 35px;
-    border: 1px solid green;
-    background-color: aquamarine;
     cursor: pointer;
 }
 
-.btn_selected {
+.btn_green {
+    border: 1px solid green;
+    background-color: aquamarine;
+}
+
+.btn_red {
     border-color: red;
     background-color: lightcoral;
+}
+
+.btn_default {
+    border-color: black;
+    background-color: white;
 }

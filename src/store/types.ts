@@ -1,3 +1,3 @@
-import { AddToStoreAction, RemoveFromStoreAction } from './interfaces'
+import { AddToStoreAction, RemoveFromStoreAction, RemoveLaunchesFromStore } from './interfaces';
 
-export type LaunchesActionTypes = AddToStoreAction | RemoveFromStoreAction
+export type LaunchesActionTypes = AddToStoreAction | RemoveFromStoreAction | RemoveLaunchesFromStore;

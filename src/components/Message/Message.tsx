@@ -28,7 +28,7 @@ const Message = (props: MessageProps) => {
     } else {
         return (
             <div className={`${classes.message} ${classes[status]}`}>
-                {message}
+                <p>{message}</p>
             </div>
         );
     }

@@ -36,7 +36,7 @@ const MissionItem = (props: MissionProps) => {
         <h3>{name}</h3>
         <p className={classes.description}>{desc ? desc : noDescription}</p>
       </div>
-      <Button width='' isSelected={isSelected} onClick={onSelectHandler}>
+      <Button width='' buttonClass={isSelected ? 'red' : 'green'} onClick={onSelectHandler}>
         {isSelected ? 'Selected' : 'Select'}
       </Button>
     </div>
