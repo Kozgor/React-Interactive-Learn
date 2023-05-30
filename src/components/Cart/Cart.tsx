@@ -29,8 +29,10 @@ const Cart = memo((props: BackdropProps) => {
     };
 
     useEffect(() => {
-        setLaunchAmount(selectedMissions.length);
-        setCheckoutMessage('');
+        if (selectedMissions.length > 0) {
+            setLaunchAmount(selectedMissions.length);
+            setCheckoutMessage('');
+        }
     }, [selectedMissions]);
 
     const checkoutHandler = () => {
