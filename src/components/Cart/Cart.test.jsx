@@ -6,7 +6,6 @@ import React from "react";
 import configureStore from "redux-mock-store";
 import Cart from "./Cart";
 
-
 const mockStore = configureStore([]);
 
 describe("Cart component:", () => {
@@ -71,7 +70,7 @@ describe("Cart component:", () => {
         expect(launchAmountInput.value).toBe("2");
     });
 
-    test("Should set checkoutMessage and checkoutStatus to 'Please pay for items' and 'error' when customerAmount < maxAmount", () => {
+    test("Should not dispatch removeAllLaunchescall on checkoutHandler", () => {
         const checkoutButton = screen.getByText("Checkout");
 
         fireEvent.change(screen.getByTestId("launchAmount"), { target: { value: "0" } });
@@ -80,11 +79,26 @@ describe("Cart component:", () => {
         expect(store.getActions()).not.toEqual([removeAllLaunches()])
     });
 
-    test("should dispatch removeAllLaunchescall on checkoutHandler", () => {
+    test("Should dispatch removeAllLaunchescall on checkoutHandler", () => {
         const checkoutButton = screen.getByText("Checkout");
 
         fireEvent.click(checkoutButton);
 
         expect(store.getActions()).toEqual([removeAllLaunches()])
+    });
+
+    test("Should show empty cart message", async () => {
+        await component.unmount();
+        const initialState = { launches: [] };
+        store = mockStore(initialState);
+
+        component = render(
+        <Provider store={store}>
+            <Cart />
+        </Provider>)
+
+        const emptyCartMessage = screen.getByText('Cart is empty!')
+
+        expect(emptyCartMessage).toBeInTheDocument();
     });
 });
