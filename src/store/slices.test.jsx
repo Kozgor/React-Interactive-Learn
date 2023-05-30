@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { launchesSlice } from './slices';
 
 const { reducer, actions } = launchesSlice;
-const { addLaunch, removeLaunch } = actions;
+const { addLaunch, removeLaunch,  removeAllLaunches } = actions;
 
 describe('Launches reducer', () => {
     test('Should handle addLaunch', () => {
@@ -59,5 +59,27 @@ describe('Launches reducer', () => {
             desc: 'desc1',
             flightId: 1
         }]);
+    });
+
+    test('Should handle remove all launches', () => {
+        const initialState = {
+            launches: [
+                {
+                    name: 'Test1',
+                    desc: 'desc1',
+                    flightId: 1
+                },
+                {
+                    name: 'Test2',
+                    desc: 'desc2',
+                    flightId: 2
+                },
+            ]
+        };
+        const store = configureStore({ reducer, preloadedState: initialState });
+
+        store.dispatch(removeAllLaunches());
+
+        expect(store.getState().launches.length).toBe(0);
     });
 });
