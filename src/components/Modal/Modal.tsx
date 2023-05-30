@@ -12,9 +12,9 @@ const ModalOverlay = (props: BaseProps) => {
     return <div data-testid="modal-overlay" className={classes.modal}>{props.children}</div>;
 };
 
-const portalElement = document.getElementById("overlays") as HTMLElement;
-
 const Modal = (props: ModalProps) => {
+    const portalElement = document.getElementById("overlays") as HTMLElement;
+
     return <>
         {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
         {ReactDOM.createPortal(<ModalOverlay>{props.children}</ModalOverlay>, portalElement)}

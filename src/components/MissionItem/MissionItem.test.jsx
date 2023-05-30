@@ -43,9 +43,9 @@ describe("MissionItem component:", () => {
         const store = mockStore(initialState);
 
         render(
-        <Provider store={store}>
-            <MissionItem name="Test Mission" desc="Test Description" flightId={flightId} />
-        </Provider>
+            <Provider store={store}>
+                <MissionItem name="Test Mission" desc="Test Description" flightId={flightId} />
+            </Provider>
         );
 
         const button = screen.getByRole('button');

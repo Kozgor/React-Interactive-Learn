@@ -3,7 +3,7 @@ import { ButtonProps } from "../../interfaces/button-props.interface";
 import classes from "./Button.module.css";
 
 const Button = (props: ButtonProps) => {
-    const { isSelected, onClick, children } = props;
+    const { isSelected, onClick, children, width } = props;
 
     return (
         <button
@@ -15,6 +15,7 @@ const Button = (props: ButtonProps) => {
                     : `${classes.btn}`
             }
             onClick={onClick}
+            style={{ width: width ? width : '80px' }}
         >
             {children}
         </button>

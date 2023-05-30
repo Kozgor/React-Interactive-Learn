@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
 
-import "./App.css";
 import Header from "./components/Header/Header";
 import MissionItem from "./components/MissionItem/MissionItem";
 import Wrapper from "./components/Wrapper/Wrapper";
