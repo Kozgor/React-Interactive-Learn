@@ -1,16 +1,17 @@
+import { useState, MouseEventHandler, memo } from "react";
+
 import { MessageProps } from "../../interfaces/message-props.interface";
-import { useState, MouseEventHandler } from "react";
 
 import classes from "./Message.module.css";
 
-const Message = (props: MessageProps) => {
+const Message = memo((props: MessageProps) => {
     const { status, message, removeOnClick } = props;
     const [toRemove, setRemove] = useState('');
     const handleClick: MouseEventHandler<HTMLDivElement> = (event) => {
         event.preventDefault();
         setRemove('remove');
     };
-    
+
     if (toRemove) {
         return null;
     }
@@ -32,6 +33,6 @@ const Message = (props: MessageProps) => {
             </div>
         );
     }
-};
+});
 
 export default Message;
