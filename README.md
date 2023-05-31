@@ -14,5 +14,6 @@
 
 ````npm run coverage```` to check code coverage.
 
-````https://kozgor.github.io/React-Interactive-Learn/```` link to project
+Follow the [link](https://kozgor.github.io/React-Interactive-Learn/) to check our project!&nbsp;&nbsp;<img width="25px" alt=":)" src="https://icon-library.com/images/projects-icon/projects-icon-1.jpg">
+
 <p align="right"><img width="150px" float="right" alt="We can do it!" src="https://octodex.github.com/images/mona-the-rivetertocat.png"></p>
