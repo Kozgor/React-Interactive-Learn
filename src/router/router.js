@@ -7,6 +7,7 @@ const Router = () => {
   return (
     <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="https://kozgor.github.io/React-Interactive-Learn/" component={HomePage} />
         <Route path="*" component={NotFound} />
     </Switch>
   );
